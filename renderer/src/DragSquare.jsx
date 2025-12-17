@@ -12,8 +12,7 @@ const DragSquare = ({ startX = 100, startY = 100, color = "dodgerblue" }) => {
   return (
     <div
       onMouseDown={onMouseDown}
-      onMouseMove={onMouseMove}
-      onMouseUp={onMouseUp}
+ 
       style={{
         position: "absolute",
         left: position.x,

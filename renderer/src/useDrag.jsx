@@ -21,7 +21,6 @@ export const UseDrag = (startX = 0, startY = 0) => {
     });
   };
 
-  // Instead of returning onMouseUp, we attach it to window
   useEffect(() => {
     const handleMouseUp = () => setDragging(false);
     const handleMouseMove = (e) => {
@@ -45,6 +44,6 @@ export const UseDrag = (startX = 0, startY = 0) => {
 
   return {
     position,
-    onMouseDown, // attach this to your draggable element
+    onMouseDown, 
   };
 };
