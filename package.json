@@ -5,15 +5,22 @@
   "license": "ISC",
   "author": "Umanga Bajgai, Karl Onasa",
   "type": "commonjs",
-  "main": "index.js",
+  "main": "main/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron . "
+    "start": "electron .",
+    "dev": "concurrently \"cd renderer && npm run dev\" \"wait-on http://localhost:5173 && electron .\""
   },
   "devDependencies": {
+<<<<<<< HEAD
     "electron": "^39.2.7"
   },
   "dependencies": {
     "react": "^19.2.3"
+=======
+    "concurrently": "^9.2.1",
+    "electron": "^39.2.7",
+    "wait-on": "^9.0.3"
+>>>>>>> 23af8c747c7e4a64e2a3bfca4c24fd1ae6a9de43
   }
 }
