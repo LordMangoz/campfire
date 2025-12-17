@@ -3,6 +3,7 @@ import reactLogo from '../assets/react.svg'
 import viteLogo from  '../../public/vite.svg'
 import './App.css'
 import DragSquare from '../dragSquare'
+import WhiteboardWidget from '../WhiteboardWidget/WhiteboardWidget'
 
 const App = () => {
   const [count, setCount] = useState(0)
@@ -31,8 +32,8 @@ const App = () => {
       </p>
 
       
-      <DragSquare startX={50} startY={50} color="white" />
-    
+     
+      <WhiteboardWidget startX={50} startY={50} color="grey"/>
 
     </>
   )
