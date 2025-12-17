@@ -1,0 +1,16 @@
+{
+  "name": "lindzyapplication",
+  "version": "1.0.0",
+  "description": "An application that is intended for our bestest friend uhm and not because we are trynna to do projects",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "devDependencies": {
+    "electron": "^39.2.7"
+  }
+}
