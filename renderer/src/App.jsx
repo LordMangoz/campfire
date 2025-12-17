@@ -2,7 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Home from './Home'
+import DragSquare from './dragSquare'
 const App = () => {
   const [count, setCount] = useState(0)
 
@@ -30,9 +30,9 @@ const App = () => {
       </p>
 
       
-      <Home startX={50} startY={50} color="red" />
-      <Home startX={200} startY={80} color="green" />
-      <Home startX={350} startY={120} color="blue" />
+      <DragSquare startX={50} startY={50} color="red" />
+      <DragSquare startX={200} startY={80} color="green" />
+      <DragSquare startX={350} startY={120} color="blue" />
     </>
   )
 }
