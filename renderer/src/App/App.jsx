@@ -4,6 +4,7 @@ import viteLogo from  '../../public/vite.svg'
 import './App.css'
 import DragSquare from '../dragSquare'
 import WhiteboardWidget from '../WhiteboardWidget/WhiteboardWidget'
+import StopwatchWidget from '../StopwatchWidget/StopWatchWidget'
 
 const App = () => {
   const [count, setCount] = useState(0)
@@ -34,7 +35,7 @@ const App = () => {
       
      
       <WhiteboardWidget startX={50} startY={50} color="grey"/>
-
+      <StopwatchWidget startX={50} startY={50} color="grey"/>
     </>
   )
 }
