@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { UseDrag } from './useDrag';
 import React from "react";
+import Whiteboard from './Whiteboard/Whiteboard';
 
 
 const DragSquare = ({ startX = 100, startY = 100, color = "dodgerblue" }) => {
@@ -23,7 +24,11 @@ const DragSquare = ({ startX = 100, startY = 100, color = "dodgerblue" }) => {
         cursor: "grab",
         userSelect: "none",
       }}
-    />
+    >
+
+        <Whiteboard />
+    </div>
+        
   );
 
   
