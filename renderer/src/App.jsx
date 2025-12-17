@@ -29,7 +29,10 @@ const App = () => {
         Click on the Vite and React logos to learn more
       </p>
 
-      <Home/>
+      
+      <Home startX={50} startY={50} color="red" />
+      <Home startX={200} startY={80} color="green" />
+      <Home startX={350} startY={120} color="blue" />
     </>
   )
 }

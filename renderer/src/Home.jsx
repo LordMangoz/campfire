@@ -2,15 +2,47 @@ import { useState } from 'react'
 import React from "react";
 
 
-const Home = () => {
+const Home = ({ startX = 100, startY = 100, color = "dodgerblue" }) => {
+   const [position, setPosition] = useState({ x: startX, y: startY });
+  const [dragging, setDragging] = useState(false);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
 
+  const onMouseDown = (e) => {
+    setDragging(true);
+    setOffset({
+      x: e.clientX - position.x,
+      y: e.clientY - position.y,
+    });
+  };
 
-  return(<>
-  <div style={{ color: "white", fontSize: "20px", padding: "10px", height: "50px", width: "50px", backgroundColor: "blue"}}>
-    Hello
-    </div>
-    </>
-)
+  const onMouseMove = (e) => {
+    if (!dragging) return;
+    setPosition({
+      x: e.clientX - offset.x,
+      y: e.clientY - offset.y,
+    });
+  };
+
+  const onMouseUp = () => setDragging(false);
+
+  return (
+    <div
+      onMouseDown={onMouseDown}
+      onMouseMove={onMouseMove}
+      onMouseUp={onMouseUp}
+      style={{
+        position: "absolute",
+        left: position.x,
+        top: position.y,
+        width: 100,
+        height: 100,
+        backgroundColor: color,
+        cursor: "grab",
+        userSelect: "none",
+      }}
+    />
+  );
+
   
 };
 
