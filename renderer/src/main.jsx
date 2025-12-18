@@ -3,7 +3,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js"
 
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
+import App from "./App/App.jsx"
 import Sidebar from './SideBar/SideBar.jsx'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Statistics from './pages/Statistics/Statistics.jsx'
