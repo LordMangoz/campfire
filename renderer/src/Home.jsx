@@ -2,7 +2,7 @@ import { useState } from 'react'
 import React from "react";
 
 
-const Home = ({ startX = 100, startY = 100, color = "dodgerblue" }) => {
+const Homes = ({ startX = 100, startY = 100, color = "dodgerblue" }) => {
    const [position, setPosition] = useState({ x: startX, y: startY });
   const [dragging, setDragging] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
@@ -46,4 +46,4 @@ const Home = ({ startX = 100, startY = 100, color = "dodgerblue" }) => {
   
 };
 
-export default Home;
+export default Homes;
