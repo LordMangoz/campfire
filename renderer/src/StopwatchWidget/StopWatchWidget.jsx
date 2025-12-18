@@ -16,26 +16,18 @@ const StopwatchWidget = ({ startX = 100, startY = 100, color = "dodgerblue" }) =
       onMouseMove={onMouseMove}
       onMouseUp={onMouseUp}
       style={{
+        border: "1px solid #000",
         position: "absolute",
         left: position.x,
         top: position.y,
         width: 300,
-        height: 10,
+        height: 105,
         backgroundColor: color,
         cursor: "grab",
         userSelect: "none",
       }}
-    />
-    <div style={{
-        position: "absolute",
-        left: position.x,
-        top: position.y + 10,
-        width: 300,
-        height: 200,
-        backgroundColor: "white",
-      }}>
-    <Stopwatch />
-    </div>
+    > <Stopwatch /></div>
+   
     </>
         
   );

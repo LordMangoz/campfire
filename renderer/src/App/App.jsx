@@ -5,6 +5,8 @@ import './App.css'
 import DragSquare from '../dragSquare'
 import WhiteboardWidget from '../WhiteboardWidget/WhiteboardWidget'
 import StopwatchWidget from '../StopwatchWidget/StopWatchWidget'
+import ResizableSquare from '../ResizableSquare/ResizableSquare'
+import { WidgetManager } from '../WidgetManager/WidgetManager'
 
 const App = () => {
   const [count, setCount] = useState(0)
@@ -34,8 +36,11 @@ const App = () => {
 
       
      
-      <WhiteboardWidget startX={50} startY={50} color="grey"/>
-      <StopwatchWidget startX={50} startY={50} color="grey"/>
+      {/* <WhiteboardWidget startX={50} startY={50} color="grey"/>
+      <StopwatchWidget startX={100} startY={100} color="grey"/>
+      <ResizableSquare /> */}
+      <WidgetManager />
+
     </>
   )
 }
