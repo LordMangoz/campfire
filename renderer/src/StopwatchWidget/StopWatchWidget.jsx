@@ -4,7 +4,7 @@ import React from "react";
 import Stopwatch from '../Stopwatch/Stopwatch';
 
 
-const StopwatchWidget = ({ startX = 100, startY = 100, color = "dodgerblue" }) => {
+const StopwatchWidget = ({ widID = 1, startX = 100, startY = 100, color = "dodgerblue" }) => {
 
   const { position, onMouseDown, onMouseMove, onMouseUp } = UseDrag(startX, startY);
 

@@ -1,22 +1,33 @@
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 import { UseDrag } from '../useDrag';
-import React from "react";
 import Whiteboard from '../Whiteboard/Whiteboard';
 import UseResize from '../useResize/useResize';
+import { useWidgets } from '../WidgetProvider/WidgetProvider';
 
-
-const WhiteboardWidget = ({ startX = 100, startY = 100, color = "dodgerblue" }) => {
+const WhiteboardWidget = ({ widID = 1, startX = 100, startY = 100, color = "dodgerblue" }) => {
 
   const { position, onMouseDown, onMouseMove, onMouseUp } = UseDrag(startX, startY);
   const { size, squareRef, startDragging } = UseResize();
+ const { widgets, setWidgets } = useWidgets();
 
-
+const updateWidget = () => {
+  setWidgets(prev => {
+    const newWidgets = prev.map(widget =>
+      widget.id === widID
+        ? { ...widget, posX: position.x, posY: position.y }
+        : widget
+    );
+    console.log('Updated widgets:', newWidgets); // <- log the updated state
+    return newWidgets;
+  });
+};
   return (
     <>
     <div
-      onMouseDown={onMouseDown}
-      onMouseMove={onMouseMove}
-      onMouseUp={onMouseUp}
+        onMouseDown={onMouseDown}
+
+        
+      onMouseUp={updateWidget}
        ref={squareRef}
       style={{
         position: "absolute",

@@ -22,12 +22,16 @@ export const WidgetManager = () =>{
             {
               id: 1,
               type: "stopwatch",
-              props: { startX: 200, startY: 200, color: "grey" }
+              posX: 200,
+              posY: 200,
+              color: "grey",
             },
             {
               id: 2,
               type: "whiteboard",
-              props: { startX: 300, startY: 300, color: "grey" }
+              posX: 200,
+              posY: 200,
+              color: "grey",
             }
           ]);
         }
@@ -53,19 +57,22 @@ export const WidgetManager = () =>{
       {
         id: Date.now(),
         type: "whiteboard",
-        props: { startX, startY, color }
+        posX: startX,
+        posY: startY,
+        color: color,
+      
       }
     ]);
   };
 
   return (
     <>
-      {widgets.map(({ id, type, props }) => {
+      {widgets.map(({ id, type, posX, posY, color }) => {
         const Component = componentMap[type];
-        return <Component key={id} {...props} />;
+      return <Component key={id} widID={id} startX={posX} startY={posY} color={color} />;
       })}
 
-      <button onClick={() => addWhiteboard(200, 200, "grey")}>
+      <button onClick={() => addWhiteboard(300, 200, "green")}>
         add whiteboard
       </button>
     </>
