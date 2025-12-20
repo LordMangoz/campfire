@@ -17,23 +17,15 @@ export const WidgetManager = () =>{
         if (savedWidgets && savedWidgets.length > 0) {
           setWidgets(savedWidgets);
         } else {
-          // Optional: default widgets if no save exists
-          setWidgets([
-            {
-              id: 1,
-              type: "stopwatch",
-              posX: 200,
-              posY: 200,
-              color: "grey",
-            },
-            {
-              id: 2,
-              type: "whiteboard",
-              posX: 200,
-              posY: 200,
-              color: "grey",
-            }
-          ]);
+        //  Optional: default widgets if no save exists
+          console.log(savedWidgets);
+           setWidgets(prev => [
+            ...prev,
+           
+        ]);
+
+        // setWidgets([]); // or default widgets
+
         }
       });
     }
@@ -43,6 +35,8 @@ export const WidgetManager = () =>{
   useEffect(() => {
     if (window.widgetsAPI) {
       window.widgetsAPI.save(widgets);
+      window.widgetsAPI.load().then((savedWidgets) => { console.log(savedWidgets); });
+       
     }
   }, [widgets]);
 

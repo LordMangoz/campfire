@@ -6,16 +6,17 @@ console.log('Hello from Electron 👋');
 
 const filePath = path.join(app.getPath('userData'), 'widgets.json');
 
-ipcMain.handle('save-widgets', (_, widgets) => {
+ipcMain.on('save-widgets', (_, widgets) => {
   fs.writeFileSync(filePath, JSON.stringify(widgets, null, 2));
-  return true;
 });
 
-ipcMain.handle('load-widgets', () => {
-  if (!fs.existsSync(filePath)) return [];
-  return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+ipcMain.handle('load-widgets', async () => {
+  if (fs.existsSync(filePath)) {
+    const data = fs.readFileSync(filePath , 'utf8');
+    return JSON.parse(data);
+  }
+  return []; // return empty array if no save exists
 });
-
 const createWindow = () => {
     const win = new BrowserWindow({
        webPreferences: {

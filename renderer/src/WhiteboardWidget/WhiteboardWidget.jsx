@@ -10,23 +10,18 @@ const WhiteboardWidget = ({ widID = 1, startX = 100, startY = 100, color = "dodg
   const { size, squareRef, startDragging } = UseResize();
  const { widgets, setWidgets } = useWidgets();
 
-const updateWidget = () => {
-  setWidgets(prev => {
-    const newWidgets = prev.map(widget =>
-      widget.id === widID
-        ? { ...widget, posX: position.x, posY: position.y }
-        : widget
-    );
-    console.log('Updated widgets:', newWidgets); // <- log the updated state
-    return newWidgets;
-  });
-};
+    
+const updateWidget = () => { 
+    setWidgets(prev => 
+        prev.map(widgets => 
+            widgets.id === widID 
+            ? { ...widgets, posX: position.x, posY: position.y } // update only the matching widget 
+            : widgets // leave others unchanged 
+            ) ); };
   return (
     <>
     <div
         onMouseDown={onMouseDown}
-
-        
       onMouseUp={updateWidget}
        ref={squareRef}
       style={{
