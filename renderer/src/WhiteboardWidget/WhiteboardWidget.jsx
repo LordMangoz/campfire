@@ -16,9 +16,9 @@ const WhiteboardWidget = ({ widID = 1, startX = 100, startY = 100, color = "dodg
     <>
     <div
         onMouseDown={onMouseDown}
-      onMouseUp={() => changePosition(widID, position)}
-       ref={squareRef}
-      style={{
+        onMouseUp={() => changePosition(widID, position)}
+        ref={squareRef}
+        style={{
         position: "absolute",
         left: position.x,
         top: position.y,

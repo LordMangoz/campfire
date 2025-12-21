@@ -1,9 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import DragSquare from '../dragSquare'
-import WhiteboardWidget from '../WhiteboardWidget/WhiteboardWidget'
-import StopwatchWidget from '../StopwatchWidget/StopWatchWidget'
-import ResizableSquare from '../ResizableSquare/ResizableSquare'
+import Timer from '../Timer/Timer'
 import { WidgetManager } from '../WidgetManager/WidgetManager'
 
 const App = () => {
@@ -12,6 +9,7 @@ const App = () => {
     <div>
       <h1>You've Scrolled too far, <br/>rest here</h1>
       <WidgetManager />
+      <Timer />
     </div>
   )
 }
