@@ -3,10 +3,14 @@ import WhiteboardWidget from '../WhiteboardWidget/WhiteboardWidget';
 import StopwatchWidget from '../StopwatchWidget/StopWatchWidget';
 import DragSquare from '../dragSquare';
 import { useWidgets } from '../WidgetProvider/WidgetProvider';
+import Popup from '../Popup/Popup';
+import { CreateWidget } from '../CreateWidget/CreateWidget';
 
 export const WidgetManager = () =>{
-//   const [isPopupOpen, setIsPopupOpen] = useState(false);
-//   const togglePopup = () => setIsPopupOpen(!isPopupOpen);
+   const [isPopupOpen, setIsPopupOpen] = useState(false);
+   const togglePopup = () => {
+    setIsPopupOpen(!isPopupOpen);
+  };
 
   
     const { widgets, setWidgets } = useWidgets();
@@ -21,6 +25,7 @@ export const WidgetManager = () =>{
           console.log(savedWidgets);
            setWidgets(prev => [
             ...prev,
+           
            
         ]);
 
@@ -45,19 +50,7 @@ export const WidgetManager = () =>{
     whiteboard: WhiteboardWidget,
   };
 
-  const addWhiteboard = (startX = 100, startY = 100, color = "dodgerblue") => {
-    setWidgets(prev => [
-      ...prev,
-      {
-        id: Date.now(),
-        type: "whiteboard",
-        posX: startX,
-        posY: startY,
-        color: color,
-      
-      }
-    ]);
-  };
+
 
   return (
     <>
@@ -66,9 +59,13 @@ export const WidgetManager = () =>{
       return <Component key={id} widID={id} startX={posX} startY={posY} color={color} />;
       })}
 
-      <button onClick={() => addWhiteboard(300, 200, "green")}>
+      <button onClick={togglePopup}>
         add whiteboard
       </button>
+
+       <Popup show={isPopupOpen} onClose={togglePopup}>
+        <CreateWidget />
+       </Popup>
     </>
   );
 };

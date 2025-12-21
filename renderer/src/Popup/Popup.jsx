@@ -1,25 +1,18 @@
 import React from 'react';
-import './Popup.css'; 
+import './Popup.css';
 
-const Popup = ({ showPopUp, closePopUp, children }) => {
-  if (!showPopUp) {
-    return null; // Don't render anything if showPopUp is false
+const Popup = ({ show, onClose, children }) => {
+  if (!show) {
+    return null;
   }
 
-  // Prevents closing the modal when clicking inside the content area
-  const handleContentClick = (e) => {
-    e.stopPropagation();
-  };
-
   return (
-    // The overlay/backdrop that closes the modal when clicked
-    <div className="popup-overlay" onClick={closePopUp}>
-      {/* The modal content container */}
-      <div className="popup-content" onClick={handleContentClick}>
-        <button className="popup-close-btn" onClick={closePopUp}>
-          &times; {/* A simple 'X' close button */}
+    <div className="popup-overlay" onClick={onClose}>
+      <div className="popup-inner" onClick={e => e.stopPropagation()}>
+        {children}
+        <button className="popup-close-btn" onClick={onClose}>
+          Close
         </button>
-        {children} {/* Renders content passed from the parent component */}
       </div>
     </div>
   );

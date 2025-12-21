@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { UseDrag } from './useDrag';
+import { UseDrag } from './UseDrag/UseDrag';
 import React from "react";
 
 
