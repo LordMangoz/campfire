@@ -1,7 +1,7 @@
-import { useWidgets } from "../WidgetProvider/WidgetProvider";
+import { UseWidgets } from "../WidgetProvider/WidgetProvider";
 
 export const updateWidget = () => {
-  const { widgets, setWidgets } = useWidgets();
+  const { setWidgets } = UseWidgets();
 
   const changePosition = (widID, position) => {
     setWidgets((prev) =>

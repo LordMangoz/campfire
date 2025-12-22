@@ -10,6 +10,7 @@ import Statistics from "./pages/Statistics/Statistics.jsx";
 import Settings from "./pages/Settings/Settings.jsx";
 import Credits from "./pages/Credits/Credits.jsx";
 import { WidgetProvider } from "./WidgetProvider/WidgetProvider.jsx";
+import Tasks from "./pages/Tasks/Tasks.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -26,8 +27,5 @@ createRoot(document.getElementById("root")).render(
         </Routes>
       </Router>
     </WidgetProvider>
-
-    <StopwatchWidget />
-    <Whiteboard />
   </StrictMode>
 );

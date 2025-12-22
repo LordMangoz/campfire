@@ -1,9 +1,7 @@
-import { useState } from "react";
 import "./App.css";
 import { WidgetManager } from "../WidgetManager/WidgetManager";
 
 const App = () => {
-  const [widgets, setWidgets] = useState([]);
   return (
     <div>
       <h1>

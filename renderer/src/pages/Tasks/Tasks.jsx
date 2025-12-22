@@ -1,12 +1,12 @@
 import "./tasks.css";
-import ListItems from "../ListItems/ListItems.jsx";
+import ListItems from "../../ListItems/ListItems.jsx";
 
 import { useState } from "react";
 
 //should repolace this with an acutal uid library, but am lazy rn.
 const getUid = () => Date.now();
 
-export default function Tasks() {
+function Tasks() {
   //make state, give each item its unique id.
   const [listItems, setListItems] = useState([getUid()]);
 
@@ -36,3 +36,5 @@ export default function Tasks() {
     </div>
   );
 }
+
+export default Tasks;

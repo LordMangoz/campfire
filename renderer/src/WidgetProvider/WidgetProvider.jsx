@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext } from "react";
 
 const WidgetContext = createContext();
 
@@ -11,4 +11,4 @@ export const WidgetProvider = ({ children }) => {
   );
 };
 
-export const useWidgets = () => useContext(WidgetContext);
+export const UseWidgets = () => useContext(WidgetContext);
