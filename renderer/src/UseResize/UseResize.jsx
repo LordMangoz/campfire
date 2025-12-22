@@ -36,7 +36,9 @@ const UseResize = (minSizeX = 100, minSizeY = 100) => {
   }, [onDragging, stopDragging]);
  return {
     sizeX,
+    setSizeX,
     sizeY,
+    setSizeY,
     squareRef, 
     startDragging,
   };
