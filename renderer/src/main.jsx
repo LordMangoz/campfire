@@ -9,8 +9,9 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Statistics from './pages/Statistics/Statistics.jsx'
 import Settings from './pages/Settings/Settings.jsx'
 import Credits from './pages/Credits/Credits.jsx'
-
-
+import Tasks  from "./pages/Tasks/Tasks/Tasks.jsx"
+import Whiteboard from "./Whiteboard/Whiteboard.jsx"
+import StopwatchWidget from "./StopwatchWidget/StopWatchWidget.jsx"
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     
@@ -20,11 +21,14 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path='/' element={<App />}/>
         <Route path='/Statistics' element={<Statistics/>}/> 
+        <Route path='/Tasks' element={<Tasks/>}/>   
         <Route path='/Settings' element={<Settings/>}/> 
         <Route path='/Credits' element={<Credits/>}/> 
 
       </Routes>
     </Router>
 
+    <StopwatchWidget />
+        <Whiteboard /> 
   </StrictMode>
 )

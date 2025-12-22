@@ -1,0 +1,59 @@
+.ListItems {
+  width: 80%;
+  height: 30px;
+  border: 0.5px solid darkgray;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding-left: 5px;
+  background-color: white;
+  animation: listItemFadeIn 0.5s ease-out;
+}
+
+@keyframes listItemFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ListItemBody {
+  width: 90%;
+  height: 100%;
+  border: none;
+  background: none;
+}
+
+.ListItemBodys:focus {
+  outline: none;
+}
+
+.ListItems.Checked .ListItemBody {
+  text-decoration: line-through;
+}
+
+.DeleteButton {
+  border: none;
+  background: none;
+  color: lightgray;
+}
+
+.DeleteButton:hover {
+  color: darkgray;
+}
+
+.ListItems:last-child .DeleteButton {
+  visibility: hidden;
+}
+
+.ListItems:has(.ListItemBody:placeholder-shown) .ListItemCheckbox {
+  opacity: 10%;
+  pointer-events: none;
+}
