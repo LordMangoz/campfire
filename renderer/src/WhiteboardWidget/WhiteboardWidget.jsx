@@ -8,7 +8,7 @@ import { updateWidget } from '../UpdateWidget/UpdateWidget';
 const WhiteboardWidget = ({ widID = 1, startX = 100, startY = 100, color = "dodgerblue" }) => {
 
   const { position, onMouseDown, onMouseMove, onMouseUp } = UseDrag(startX, startY);
-  const { size, squareRef, startDragging } = UseResize();
+  const { sizeX, sizeY, squareRef, startDragging } = UseResize();
   const { changePosition, deleteWidget } = updateWidget();
     
 
@@ -22,7 +22,7 @@ const WhiteboardWidget = ({ widID = 1, startX = 100, startY = 100, color = "dodg
         position: "absolute",
         left: position.x,
         top: position.y,
-        width: size,
+        width: sizeX,
         height: 10,
         backgroundColor: color,
         cursor: "grab",
@@ -52,8 +52,8 @@ const WhiteboardWidget = ({ widID = 1, startX = 100, startY = 100, color = "dodg
         position: "absolute",
         left: position.x,
         top: position.y + 10,
-        width: size,
-        height: size,
+        width: sizeX,
+        height: sizeY,
         backgroundColor: "white",
       }}>
     <Whiteboard />

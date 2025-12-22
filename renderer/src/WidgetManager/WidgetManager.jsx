@@ -5,6 +5,7 @@ import DragSquare from '../dragSquare';
 import { useWidgets } from '../WidgetProvider/WidgetProvider';
 import Popup from '../Popup/Popup';
 import { CreateWidget } from '../CreateWidget/CreateWidget';
+import TimerWidget from '../TimerWidget/TimerWidget';
 
 export const WidgetManager = () =>{
    const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -48,6 +49,7 @@ export const WidgetManager = () =>{
   const componentMap = {
     stopwatch: StopwatchWidget,
     whiteboard: WhiteboardWidget,
+    timer: TimerWidget,
   };
 
 

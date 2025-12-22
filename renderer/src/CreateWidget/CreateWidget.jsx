@@ -7,7 +7,7 @@ export const CreateWidget = () => {
     setSelectedValue(event.target.value); // Update state on change
   };
 
-    const addWhiteboard = (widType = "whiteboard", startX = 100, startY = 100, color = "dodgerblue") => {
+    const addWidget = (widType = "whiteboard", startX = 100, startY = 100, color = "dodgerblue") => {
     setWidgets(prev => [
       ...prev,
       {
@@ -30,12 +30,13 @@ return(
       <select value={selectedValue} onChange={handleChange} name="selectedWidget">
         <option value="whiteboard">whiteboard</option>
         <option value="stopwatch">stopwatch</option>
+        <option value="timer">timer</option>
       </select>
     </label>
 
     <button onClick={() => {
       // Logic to create the selected widget
-      addWhiteboard(selectedValue, 200, 200, "green");
+      addWidget(selectedValue, 200, 200, "green");
     }}>
       Create Widget
     </button>

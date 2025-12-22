@@ -9,7 +9,7 @@ const App = () => {
     <div>
       <h1>You've Scrolled too far, <br/>rest here</h1>
       <WidgetManager />
-      <Timer />
+      
     </div>
   )
 }
