@@ -1,8 +1,9 @@
 import React, { useState, useRef, useCallback } from 'react';
 
-const UseResize = (minSize = 100) => {
+const UseResize = (minSizeX = 100, minSizeY = 100) => {
   // Initial size of the square
-  const [size, setSize] = useState(minSize);
+  const [sizeX, setSizeX] = useState(minSizeX);
+  const [sizeY, setSizeY] = useState(minSizeY);
   const squareRef = useRef(null);
  
   
@@ -15,13 +16,14 @@ const UseResize = (minSize = 100) => {
   const onDragging = useCallback((event) => {
     if (squareRef.current) {
       // Get the position of the square relative to the viewport
-      const { left, top } = squareRef.current.getBoundingClientRect();
+      const { left, top, right, bottom } = squareRef.current.getBoundingClientRect();
       
       // Calculate the new size based on the mouse position
       // We use Math.max to ensure a minimum size (e.g., 20px)
-      const newSize = Math.max(minSize, event.clientX - left, event.clientY - top);
-      
-      setSize(newSize);
+      const newSizeX = Math.max(minSizeX, event.clientX - left, event.clientY - bottom);
+      const newSizeY = Math.max(minSizeY, event.clientX - right, event.clientY - top);
+      setSizeX(newSizeX);
+      setSizeY(newSizeY);
     }
   }, []);
 
@@ -33,7 +35,8 @@ const UseResize = (minSize = 100) => {
     window.addEventListener('mouseup', stopDragging);
   }, [onDragging, stopDragging]);
  return {
-    size,
+    sizeX,
+    sizeY,
     squareRef, 
     startDragging,
   };
