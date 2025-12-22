@@ -13,13 +13,7 @@ export const UseDrag = (startX = 0, startY = 0) => {
     });
   };
 
-  const onMouseMove = (e) => {
-    if (!dragging) return;
-    setPosition({
-      x: e.clientX - offset.x,
-      y: e.clientY - offset.y,
-    });
-  };
+ 
 
   useEffect(() => {
     const handleMouseUp = () => setDragging(false);

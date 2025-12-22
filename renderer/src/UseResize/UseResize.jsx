@@ -1,8 +1,8 @@
 import React, { useState, useRef, useCallback } from 'react';
 
-const UseResize = () => {
+const UseResize = (minSize = 100) => {
   // Initial size of the square
-  const [size, setSize] = useState(100);
+  const [size, setSize] = useState(minSize);
   const squareRef = useRef(null);
  
   
@@ -19,7 +19,7 @@ const UseResize = () => {
       
       // Calculate the new size based on the mouse position
       // We use Math.max to ensure a minimum size (e.g., 20px)
-      const newSize = Math.max(20, event.clientX - left, event.clientY - top);
+      const newSize = Math.max(minSize, event.clientX - left, event.clientY - top);
       
       setSize(newSize);
     }
