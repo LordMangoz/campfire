@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import './App.css'
-import Timer from '../Timer/Timer'
 import { WidgetManager } from '../WidgetManager/WidgetManager'
 
 const App = () => {
