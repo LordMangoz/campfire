@@ -1,14 +1,13 @@
-import { useState } from 'react'
 import { UseDrag } from '../UseDrag/UseDrag';
-import React from "react";
 import Stopwatch from '../Stopwatch/Stopwatch';
 import UseResize from '../useResize/useResize';
 import { updateWidget } from '../UpdateWidget/UpdateWidget';
+import Timer from '../Timer/Timer';
 
-const StopwatchWidget = ({ widID = 1, startX = 100, startY = 100, color = "dodgerblue" }) => {
+const TimerWidget = ({ widID = 1, startX = 100, startY = 100, color = "dodgerblue" }) => {
 
   const { position, onMouseDown,} = UseDrag(startX, startY);
-  const { sizeX, sizeY, squareRef, startDragging } = UseResize();
+  const { sizeX, sizeY, squareRef, startDragging } = UseResize(300);
   const { changePosition, deleteWidget } = updateWidget();
 
   return (
@@ -48,7 +47,7 @@ const StopwatchWidget = ({ widID = 1, startX = 100, startY = 100, color = "dodge
          
         }}
       />
-    <Stopwatch />
+    <Timer />
      
     </div>
        <div
@@ -72,4 +71,4 @@ const StopwatchWidget = ({ widID = 1, startX = 100, startY = 100, color = "dodge
   
 };
 
-export default StopwatchWidget;
+export default TimerWidget;

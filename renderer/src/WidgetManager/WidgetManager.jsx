@@ -1,51 +1,73 @@
-import React from 'react';
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import WhiteboardWidget from '../WhiteboardWidget/WhiteboardWidget';
 import StopwatchWidget from '../StopwatchWidget/StopWatchWidget';
 import DragSquare from '../dragSquare';
-export const WidgetManager = () =>{
+import { useWidgets } from '../WidgetProvider/WidgetProvider';
+import Popup from '../Popup/Popup';
+import { CreateWidget } from '../CreateWidget/CreateWidget';
+import TimerWidget from '../TimerWidget/TimerWidget';
 
-    const [widgets, setWidgets] = useState([
-  {
-    id: 1,
-    type: "stopwatch",
-    props: { startX: 100, startY: 100, color: "grey"}
-  },
-  {
-    id: 2,
-    type: "whiteboard",
-    props: { startX: 50, startY: 50, color: "grey"}
-  }
+export const WidgetManager = () =>{
+   const [isPopupOpen, setIsPopupOpen] = useState(false);
+   const togglePopup = () => {
+    setIsPopupOpen(!isPopupOpen);
+  };
 
   
-]);
+    const { widgets, setWidgets } = useWidgets();
+  // 🔹 LOAD widgets from disk on startup
+  useEffect(() => {
+    if (window.widgetsAPI) {
+      window.widgetsAPI.load().then((savedWidgets) => {
+        if (savedWidgets && savedWidgets.length > 0) {
+          setWidgets(savedWidgets);
+        } else {
+        //  Optional: default widgets if no save exists
+          console.log(savedWidgets);
+           setWidgets(prev => [
+            ...prev,
+           
+           
+        ]);
 
-const componentMap = {
-  stopwatch: StopwatchWidget,
-  whiteboard: WhiteboardWidget,
-};
+        // setWidgets([]); // or default widgets
 
-const addWhiteboard = ( startX = 100, startY = 100, color = "dodgerblue" ) => {
-  setWidgets(prev => [
-    ...prev,
-    {
-      id: Date.now(),
-      type: "whiteboard",
-      props: { startX: startX, startY: startY, color: color}
+        }
+      });
     }
-  ]);
-};
-return (
-  <>
-    {widgets.map(({ id, type, props }) => {
-      const Component = componentMap[type];
-      return <Component key={id} {...props} />;
-    })}
+  }, []);
+
+  // 🔹 SAVE widgets whenever they change
+  useEffect(() => {
+    if (window.widgetsAPI) {
+      window.widgetsAPI.save(widgets);
+      window.widgetsAPI.load().then((savedWidgets) => { console.log(savedWidgets); });
+       
+    }
+  }, [widgets]);
+
+  const componentMap = {
+    stopwatch: StopwatchWidget,
+    whiteboard: WhiteboardWidget,
+    timer: TimerWidget,
+  };
 
 
-    <button onClick={() => addWhiteboard(200, 200, "grey")}>
+
+  return (
+    <>
+      {widgets.map(({ id, type, posX, posY, color }) => {
+        const Component = componentMap[type];
+      return <Component key={id} widID={id} startX={posX} startY={posY} color={color} />;
+      })}
+
+      <button onClick={togglePopup}>
         add whiteboard
-    </button>
-  </>
-);
-}
+      </button>
+
+       <Popup show={isPopupOpen} onClose={togglePopup}>
+        <CreateWidget />
+       </Popup>
+    </>
+  );
+};
