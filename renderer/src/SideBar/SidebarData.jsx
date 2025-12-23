@@ -16,6 +16,12 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
+        title: 'Tasks',
+        path: '/Tasks',
+        icon: <IoIcons.IoList  />,
+        cName: 'nav-text'
+    },
+    {
         title: 'Settings',
         path: '/Settings',
         icon: <MDIcons.MdPowerSettingsNew  />,
@@ -24,7 +30,7 @@ export const SidebarData = [
     {
         title: 'Credits',
         path: "/Credits",
-        icon: <MDIcons.MdPowerSettingsNew  />,
+        icon: <MDIcons.MdStar  />,
         cName: 'nav-text'
     }
 ]
