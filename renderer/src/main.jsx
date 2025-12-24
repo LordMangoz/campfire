@@ -9,12 +9,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Statistics from "./pages/Statistics/Statistics.jsx";
 import Settings from "./pages/Settings/Settings.jsx";
 import Credits from "./pages/Credits/Credits.jsx";
-import { WidgetProvider } from "./WidgetProvider/WidgetProvider.jsx";
+import { ItemProvider } from "./ItemProvider/ItemProvider.jsx";
 import Tasks from "./pages/Tasks/Tasks.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <WidgetProvider>
+    <ItemProvider>
       <Router>
         <Sidebar />
 
@@ -26,6 +26,6 @@ createRoot(document.getElementById("root")).render(
           <Route path="/Credits" element={<Credits />} />
         </Routes>
       </Router>
-    </WidgetProvider>
+    </ItemProvider>
   </StrictMode>
 );

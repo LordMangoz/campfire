@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { UseWidgets } from "../WidgetProvider/WidgetProvider";
+import { UseItems } from "../ItemProvider/ItemProvider";
 export const CreateWidget = () => {
   const [selectedValue, setSelectedValue] = useState("whiteboard"); // State to manage the selected value
-  const { widgets, setWidgets } = UseWidgets();
+  const { widgets, setWidgets } = UseItems();
   const handleChange = (event) => {
     setSelectedValue(event.target.value); // Update state on change
   };

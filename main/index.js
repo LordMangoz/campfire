@@ -4,17 +4,31 @@ const fs = require('fs');
 
 console.log('Hello from Electron 👋');
 
-const filePath = path.join(app.getPath('userData'), 'widgets.json');
+const filePathWid = path.join(app.getPath('userData'), 'widgets.json');
+const filePathTasks = path.join(app.getPath('userData'), 'tasks.json');
 
 ipcMain.on('save-widgets', (_, widgets) => {
-  fs.writeFileSync(filePath, JSON.stringify(widgets, null, 2));
+  fs.writeFileSync(filePathWid, JSON.stringify(widgets, null, 2));
 });
 
 ipcMain.handle('load-widgets', async () => {
-  if (fs.existsSync(filePath)) {
-    const data = fs.readFileSync(filePath , 'utf8');
+  if (fs.existsSync(filePathWid)) {
+    const data = fs.readFileSync(filePathWid , 'utf8');
     return JSON.parse(data);
   }
+  return []; // return empty array if no save exists
+});
+
+//task handlers
+ipcMain.on('save-tasks', (_, tasks) => {
+  fs.writeFileSync(filePathTasks, JSON.stringify(tasks, null, 2));
+});
+
+ipcMain.handle('load-tasks', async () => {
+  if (fs.existsSync(filePathTasks)) {
+    const data = fs.readFileSync(filePathTasks , 'utf8');
+    return JSON.parse(data);
+  }   
   return []; // return empty array if no save exists
 });
 const createWindow = () => {
