@@ -1,5 +1,5 @@
 import "./App.css";
-import { WidgetManager } from "../WidgetManager/WidgetManager";
+import { WidgetManager } from "../Widgets/WidgetManager/WidgetManager";
 
 const App = () => {
   return (

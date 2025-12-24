@@ -1,4 +1,4 @@
-import { UseItems } from "../ItemProvider/ItemProvider";
+import { UseItems } from "../../ItemProvider/ItemProvider";
 
 export const updateWidget = () => {
   const { setWidgets } = UseItems();

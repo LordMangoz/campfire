@@ -1,7 +1,9 @@
 import "./ListItems.css";
 import { useState } from "react";
 import { UseItems } from "../ItemProvider/ItemProvider.jsx";
-export default function ListItems({ uid, handleChange, handleDelete, name}) {
+import Popup from "../Popup/Popup.jsx";
+import ItemDetails from "../ItemDetails/ItemDetails.jsx";
+export default function ListItems({ uid, handleChange, handleDelete, name, handlePopup }) {
   const [checked, setChecked] = useState(false);
 const { tasks, setTasks } = UseItems();
   const onCheckboxChanged = (e) => {
@@ -44,6 +46,11 @@ const { tasks, setTasks } = UseItems();
       >
         close
       </button>
+      <button onClick={() => handlePopup(uid)}>
+        details
+      </button>
+
+
     </div>
   );
 }

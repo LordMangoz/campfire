@@ -1,8 +1,10 @@
 import "./tasks.css";
 import ListItems from "../../ListItems/ListItems.jsx";
-
 import { UseItems } from "../../ItemProvider/ItemProvider.jsx";
 import { useState, useEffect } from "react";
+import Popup from "../../Popup/Popup.jsx";
+import ItemDetails from "../../ItemDetails/ItemDetails.jsx";
+
 
 //should repolace this with an acutal uid library, but am lazy rn.
 const getUid = () => Date.now();
@@ -11,10 +13,14 @@ function Tasks() {
   //make state, give each item its unique id.
   const [listItems, setListItems] = useState([getUid()]);
   const { tasks, setTasks } = UseItems();
-
-  const getLength = () => {
-    return tasks.length;
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const togglePopup = (uid) => {
+    setCurTask(uid);
+    setIsPopupOpen(!isPopupOpen);
   };
+  const [curTask, setCurTask] = useState(null);
+
+
 
   // 🔹 LOAD tasks from disk on startup
   useEffect(() => {
@@ -32,7 +38,7 @@ function Tasks() {
                 {
                   id: getUid(),
                   name: "",
-                  Description: "nothing",
+                  description: "",
                   completed: false,
                   deadLine: null,
                 },
@@ -71,7 +77,7 @@ function Tasks() {
         {
           id: getUid(),
           name: "",
-          Description: "nothing",
+          description: "",
           completed: false,
           deadLine: null,
         },
@@ -84,15 +90,34 @@ function Tasks() {
       <div className="title">Tasks</div>
       <div className="ListContainer">
         {tasks.map((task) => (
-          <ListItems
+          <ListItems 
             key={task.id}
             uid={task.id}
             handleChange={handleChange}
             handleDelete={handleDelete}
-            name ={task.name}
-          ></ListItems>
+            handlePopup={togglePopup}
+            name={task.name}
+          >
+             
+          </ListItems>
         ))}
       </div>
+
+       <Popup show={isPopupOpen} onClose={togglePopup}>
+          <div className="ListContainer" 
+          style={{
+            position: 'absolute',
+            left: '80%',
+            
+
+            }}>
+        {tasks.map((task) => (
+         <button key={task.id} onClick={() => setCurTask(task.id)} style={{border: 'none'}}>{task.name}</button>
+        ))}
+      </div>
+
+        <ItemDetails uid={Number(curTask)} />
+      </Popup>
     </div>
   );
 }

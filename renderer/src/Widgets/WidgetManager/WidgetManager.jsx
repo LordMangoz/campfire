@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import WhiteboardWidget from "../WhiteboardWidget/WhiteboardWidget";
 import StopwatchWidget from "../StopwatchWidget/StopWatchWidget";
-import DragSquare from "../dragSquare";
-import { UseItems } from "../ItemProvider/ItemProvider";
-import Popup from "../Popup/Popup";
-import { CreateWidget } from "../CreateWidget/CreateWidget";
+import DragSquare from "../../dragSquare";
+import { UseItems } from "../../ItemProvider/ItemProvider";
+import Popup from "../../Popup/Popup";
+import { CreateWidget } from "../../CreateWidget/CreateWidget";
 import TimerWidget from "../TimerWidget/TimerWidget";
 
 export const WidgetManager = () => {

@@ -1,58 +1,64 @@
-import { useState } from 'react'
-import { UseDrag } from '../UseDrag/UseDrag';
-import React from "react";
-import Stopwatch from '../Stopwatch/Stopwatch';
-import UseResize from '../useResize/useResize';
+import React, { useState, useEffect } from 'react';
+import { UseDrag } from '../../UseDrag/UseDrag';
+import Whiteboard from '../../Whiteboard/Whiteboard';
+import UseResize from '../../useResize/useResize';
+
 import { updateWidget } from '../UpdateWidget/UpdateWidget';
 
-const StopwatchWidget = ({ widID = 1, startX = 100, startY = 100, color = "dodgerblue" }) => {
+const WhiteboardWidget = ({ widID = 1, startX = 100, startY = 100, color = "dodgerblue" }) => {
 
-  const { position, onMouseDown,} = UseDrag(startX, startY);
+  const { position, onMouseDown, onMouseMove, onMouseUp } = UseDrag(startX, startY);
   const { sizeX, sizeY, squareRef, startDragging } = UseResize();
   const { changePosition, deleteWidget } = updateWidget();
+    
 
   return (
     <>
-    <div  style={{
-    
+    <div
+        onMouseDown={onMouseDown}
+        onMouseUp={() => changePosition(widID, position)}
+        ref={squareRef}
+        style={{
         position: "absolute",
         left: position.x,
         top: position.y,
-      }}> 
-    <div
-      onMouseDown={onMouseDown}
-      onMouseUp={() => changePosition(widID, position)}
-      ref={squareRef}
-      style={{
-        border: "1px solid #000",
         width: sizeX,
-        height: sizeY,
+        height: 10,
         backgroundColor: color,
         cursor: "grab",
         userSelect: "none",
-        justifyContent: 'center',
+        justifyContent: 'right',
         display: 'flex',
       }}
-    > 
+    >
       <button
         onClick={() => { deleteWidget(widID); }}
         style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
+          display: 'block',
           width: 10,
           height: 10,
           background: 'black',
           border: 'none',
           cursor: 'pointer',
-         
         }}
       />
-    <Stopwatch />
-     
+       
+      
+
     </div>
-       <div
-       style={{
+    <div 
+     ref={squareRef}
+      style={{
+        position: "absolute",
+        left: position.x,
+        top: position.y + 10,
+        width: sizeX,
+        height: sizeY,
+        backgroundColor: "white",
+      }}>
+    <Whiteboard />
+     <div
+        style={{
           position: 'absolute',
           bottom: -5,
           right: -5,
@@ -63,7 +69,7 @@ const StopwatchWidget = ({ widID = 1, startX = 100, startY = 100, color = "dodge
         }}
         // Attach the mousedown event listener
         onMouseDown={startDragging}
-        />
+      />
     </div>
     </>
         
@@ -72,4 +78,4 @@ const StopwatchWidget = ({ widID = 1, startX = 100, startY = 100, color = "dodge
   
 };
 
-export default StopwatchWidget;
+export default WhiteboardWidget;
